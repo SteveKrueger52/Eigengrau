@@ -43,7 +43,7 @@ namespace FreeDraw
         bool mouse_was_previously_held_down = false;
         bool no_drawing_on_current_drag = false;
 
-
+        int fn = 0; //tracks how many images have been created (primarily for naming files)
 
 //////////////////////////////////////////////////////////////////////////////
 // BRUSH TYPES. Implement your own here
@@ -287,6 +287,17 @@ namespace FreeDraw
             drawable_texture.Apply();
         }
 
+        public void SaveDrawing()
+        {
+            fn++;
+            byte[] bytes = drawable_texture.EncodeToPNG();
+            var path = Application.dataPath + "/SaveImages";
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
+            System.IO.File.WriteAllBytes(path + "/Image" + fn + ".png", bytes);
+        }
 
         
         void Awake()
