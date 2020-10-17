@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 namespace FreeDraw
 {
@@ -43,10 +44,10 @@ namespace FreeDraw
         bool mouse_was_previously_held_down = false;
         bool no_drawing_on_current_drag = false;
 
-        int fn = 0; //tracks how many images have been created (primarily for naming files)
+        int objType = 0;
 
-//////////////////////////////////////////////////////////////////////////////
-// BRUSH TYPES. Implement your own here
+        //////////////////////////////////////////////////////////////////////////////
+        // BRUSH TYPES. Implement your own here
 
 
         // When you want to make your own type of brush effects,
@@ -285,18 +286,42 @@ namespace FreeDraw
         {
             drawable_texture.SetPixels(clean_colours_array);
             drawable_texture.Apply();
+        }  
+        
+        public void setObjType(int type)
+        {
+            objType = type;
         }
 
         public void SaveDrawing()
         {
-            fn++;
             byte[] bytes = drawable_texture.EncodeToPNG();
             var path = Application.dataPath + "/SaveImages";
+            string name = DateTime.Now.ToString();
+            name = name.Replace("/", string.Empty);
+            name = name.Replace(":", string.Empty);
+
+            //1 = bed, 2 = easel, 3 = lamp
+            if (objType == 1)
+            {
+                name = "Bed" + name;
+            }
+            
+            else if (objType == 2)
+            {
+                name = "Easel" + name;
+            }
+
+            else
+            {
+                name = "Lamp" + name;
+            }
+            
             if (!System.IO.Directory.Exists(path))
             {
                 System.IO.Directory.CreateDirectory(path);
             }
-            System.IO.File.WriteAllBytes(path + "/Image" + fn + ".png", bytes);
+            System.IO.File.WriteAllBytes(path + "/" + name + ".png", bytes);
         }
 
         
