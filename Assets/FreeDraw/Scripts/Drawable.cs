@@ -296,31 +296,32 @@ namespace FreeDraw
         public void SaveDrawing()
         {
             byte[] bytes = drawable_texture.EncodeToPNG();
-            var path = Application.dataPath + "/SaveImages";
-            string name = DateTime.Now.ToString();
-            name = name.Replace("/", string.Empty);
-            name = name.Replace(":", string.Empty);
+            var path = Application.persistentDataPath + "/SaveImages";
+            string name; //DateTime.Now.ToString();
+//            name = name.Replace("/", string.Empty);
+//            name = name.Replace(":", string.Empty);
 
-            //1 = bed, 2 = easel, 3 = lamp
-            if (objType == 1)
+            //0 = bed, 1 = easel, 3 = lamp
+            if (objType == 0)
             {
-                name = "Bed" + name;
+                name = "Bed";// + name;
             }
             
-            else if (objType == 2)
+            else if (objType == 1)
             {
-                name = "Easel" + name;
+                name = "Easel";// + name;
             }
 
             else
             {
-                name = "Lamp" + name;
+                name = "Lamp";// + name;
             }
             
             if (!System.IO.Directory.Exists(path))
             {
                 System.IO.Directory.CreateDirectory(path);
             }
+            Debug.Log("Saving to: "+ path + "/" + name + ".png");
             System.IO.File.WriteAllBytes(path + "/" + name + ".png", bytes);
         }
 
