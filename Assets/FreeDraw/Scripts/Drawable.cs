@@ -5,6 +5,13 @@ using System;
 
 namespace FreeDraw
 {
+    public struct Point
+    {
+        public float x;
+        public float y;
+        public Point(float aX, float aY) { x = aX; y = aY; }
+    }
+
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Collider2D))]  // REQUIRES A COLLIDER2D to function
     // 1. Attach this to a read/write enabled sprite image
@@ -45,6 +52,8 @@ namespace FreeDraw
         bool no_drawing_on_current_drag = false;
 
         int objType = 0;
+
+        public static bool fillSelected = false;
 
         //////////////////////////////////////////////////////////////////////////////
         // BRUSH TYPES. Implement your own here
@@ -150,9 +159,17 @@ namespace FreeDraw
                 Collider2D hit = Physics2D.OverlapPoint(mouse_world_position, Drawing_Layers.value);
                 if (hit != null && hit.transform != null)
                 {
-                    // We're over the texture we're drawing on!
-                    // Use whatever function the current brush is
-                    current_brush(mouse_world_position);
+                    if (!fillSelected)
+                    {
+                        // We're over the texture we're drawing on!
+                        // Use whatever function the current brush is
+                        current_brush(mouse_world_position);
+                    }
+
+                    else
+                    {
+                        fill();
+                    }
                 }
 
                 else
@@ -167,6 +184,7 @@ namespace FreeDraw
                     }
                 }
             }
+
             // Mouse is released
             else if (!mouse_held_down)
             {
@@ -197,7 +215,84 @@ namespace FreeDraw
             }
         }
 
+        void fill()
+        {
+            /*
+            int w = drawable_texture.width;
+            int h = drawable_texture.height;
+            Color[] colors = drawable_texture.GetPixels();
+                                 
+            Vector2 click_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+            Queue q = new Queue();
+            q.Enqueue(new Point(click_position.x, click_position.y));
+            
+            Color toFill = colors[(int)click_position.x + (int)click_position.y * w];
+
+            while (q.Count > 0)
+            {
+                Point current = (Point) q.Dequeue();
+                for (float i = current.x; i < w; i++)
+                {
+                    Color c = colors[(int)i + (int)current.y * w];
+
+                    if (c!= toFill || c == Pen_Colour)
+                    {
+                        break;
+                    }
+
+                    colors[(int)i + (int)current.y * w] = Pen_Colour;
+
+                    if (current.y + 1 < h)
+                    {
+                        c = colors[(int)i + (int)current.y * w + w];
+                        if (c == toFill && c != Pen_Colour)
+                        {
+                            q.Enqueue(new Point(i, current.y + 1));
+                        }
+                    }
+
+                    if (current.y - 1 >= 0)
+                    {
+                        c = colors[(int)i + (int)current.y * w - w];
+                        if (c == toFill && c != Pen_Colour)
+                        {
+                            q.Enqueue(new Point(i, current.y -1));
+                        }
+                    }
+                }
+
+                for (float i = current.x - 1; i >= 0; i--)
+                {
+                    Color c = colors[(int)i + (int)current.y * w];
+
+                    if (c != toFill || c == Pen_Colour)
+                    {
+                        break;
+                    }
+                    
+                    colors[(int)i + (int)current.y * w] = Pen_Colour;
+
+                    if (current.y + 1 < h)
+                    {
+                        c = colors[(int)i + (int)current.y * w + w];
+                        if (c == toFill && c != Pen_Colour)
+                        {
+                            q.Enqueue(new Point(i, current.y + 1));
+                        }
+                    }
+
+                    if (current.y - 1 >= 0)
+                    {
+                        c = colors[(int)i + (int)current.y * w - w];
+                        if (c == toFill && c != Pen_Colour)
+                            q.Enqueue(new Point(i, current.y - 1));
+                    }
+                }
+            }
+            drawable_texture.SetPixels(colors);
+            */
+        }
 
 
 

@@ -34,6 +34,15 @@ namespace FreeDraw
             Drawable.Pen_Colour = c;
         }
 
+        public void enableFill()
+        {
+            Drawable.fillSelected = true;
+        }
+
+        public void disableFill()
+        {
+            Drawable.fillSelected = false;
+        }
 
         // Call these these to change the pen settings
         public void SetMarkerRed()
@@ -77,6 +86,14 @@ namespace FreeDraw
         public void SetMarkerPurple()
         {
             Color c = new Color(0.58f, 0, 0.82f, 1);
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
+
+        public void SetMarkerBlack()
+        {
+            Color c = Color.black;
             c.a = Transparency;
             SetMarkerColour(c);
             Drawable.drawable.SetPenBrush();
