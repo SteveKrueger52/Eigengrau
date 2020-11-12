@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using FreeDraw;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ArtScene : MonoBehaviour
 {
-    public GameObject menuPanel;
     public GameObject image;
     public GameObject preview;
     public Drawable canvas;
@@ -25,14 +25,41 @@ public class ArtScene : MonoBehaviour
         this.objType = objType < 0 ? 0 : objType;
         //0 = bed, 1 = easel, 2 = lamp
         canvas.setObjType(objType);
-        menuPanel.SetActive(false);
         image.SetActive(true);
+        /*
         preview.gameObject.transform.GetChild(objType).gameObject.SetActive(true);
+        var tempColor = preview.gameObject.transform.GetChild(objType).gameObject.GetComponent<Image>().color;
+        tempColor.a = 0.5f;
+        preview.gameObject.transform.GetChild(objType).gameObject.GetComponent<Image>().color = tempColor;
+        */
+        togglePreview();
     }
 
     public void saveDrawing()
     {
         canvas.SaveDrawing();
         SceneChanger.Instance.EndDrawing();
+    }
+
+    public void quitWithoutSaving()
+    {
+        SceneChanger.Instance.EndDrawing();
+    }
+
+    public void togglePreview()
+    {
+        if(preview.gameObject.transform.GetChild(objType).gameObject.activeSelf == true)
+        {
+            preview.gameObject.transform.GetChild(objType).gameObject.SetActive(false);
+        }
+
+        else
+        {
+            preview.gameObject.transform.GetChild(objType).gameObject.SetActive(true);
+            var tempColor = preview.gameObject.transform.GetChild(objType).gameObject.GetComponent<Image>().color;
+            tempColor.a = 0.5f;
+            preview.gameObject.transform.GetChild(objType).gameObject.GetComponent<Image>().color = tempColor;
+        }
+        
     }
 }

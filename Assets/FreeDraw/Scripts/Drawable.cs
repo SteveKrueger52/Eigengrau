@@ -1,17 +1,11 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System;
 
 namespace FreeDraw
 {
-    public struct Point
-    {
-        public float x;
-        public float y;
-        public Point(float aX, float aY) { x = aX; y = aY; }
-    }
-
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Collider2D))]  // REQUIRES A COLLIDER2D to function
     // 1. Attach this to a read/write enabled sprite image
@@ -53,7 +47,13 @@ namespace FreeDraw
 
         int objType = 0;
 
-        public static bool fillSelected = false;
+        bool makingChange = false;
+        Color32[] oldColors;
+
+        Stack undoStack = new Stack();
+        Stack redoStack = new Stack();
+
+        //public static bool fillSelected = false;
 
         //////////////////////////////////////////////////////////////////////////////
         // BRUSH TYPES. Implement your own here
@@ -140,10 +140,6 @@ namespace FreeDraw
 //////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
         // This is where the magic happens.
         // Detects when user is left clicking, which then call the appropriate function
         void Update()
@@ -159,17 +155,14 @@ namespace FreeDraw
                 Collider2D hit = Physics2D.OverlapPoint(mouse_world_position, Drawing_Layers.value);
                 if (hit != null && hit.transform != null)
                 {
-                    if (!fillSelected)
+                    // We're over the texture we're drawing on!
+                    // Use whatever function the current brush is
+                    if (!makingChange)
                     {
-                        // We're over the texture we're drawing on!
-                        // Use whatever function the current brush is
-                        current_brush(mouse_world_position);
+                        makingChange = true;
+                        oldColors = drawable_texture.GetPixels32();
                     }
-
-                    else
-                    {
-                        fill();
-                    }
+                    current_brush(mouse_world_position);
                 }
 
                 else
@@ -187,13 +180,18 @@ namespace FreeDraw
 
             // Mouse is released
             else if (!mouse_held_down)
-            {
+            {                
+                if(makingChange)
+                {
+                    undoStack.Push(oldColors);
+                    makingChange = false;
+                }
+                
                 previous_drag_position = Vector2.zero;
                 no_drawing_on_current_drag = false;
             }
             mouse_was_previously_held_down = mouse_held_down;
         }
-
 
 
         // Set the colour of pixels in a straight line from start_point all the way to end_point, to ensure everything inbetween is coloured
@@ -214,87 +212,6 @@ namespace FreeDraw
                 MarkPixelsToColour(cur_position, width, color);
             }
         }
-
-        void fill()
-        {
-            /*
-            int w = drawable_texture.width;
-            int h = drawable_texture.height;
-            Color[] colors = drawable_texture.GetPixels();
-                                 
-            Vector2 click_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-            Queue q = new Queue();
-            q.Enqueue(new Point(click_position.x, click_position.y));
-            
-            Color toFill = colors[(int)click_position.x + (int)click_position.y * w];
-
-            while (q.Count > 0)
-            {
-                Point current = (Point) q.Dequeue();
-                for (float i = current.x; i < w; i++)
-                {
-                    Color c = colors[(int)i + (int)current.y * w];
-
-                    if (c!= toFill || c == Pen_Colour)
-                    {
-                        break;
-                    }
-
-                    colors[(int)i + (int)current.y * w] = Pen_Colour;
-
-                    if (current.y + 1 < h)
-                    {
-                        c = colors[(int)i + (int)current.y * w + w];
-                        if (c == toFill && c != Pen_Colour)
-                        {
-                            q.Enqueue(new Point(i, current.y + 1));
-                        }
-                    }
-
-                    if (current.y - 1 >= 0)
-                    {
-                        c = colors[(int)i + (int)current.y * w - w];
-                        if (c == toFill && c != Pen_Colour)
-                        {
-                            q.Enqueue(new Point(i, current.y -1));
-                        }
-                    }
-                }
-
-                for (float i = current.x - 1; i >= 0; i--)
-                {
-                    Color c = colors[(int)i + (int)current.y * w];
-
-                    if (c != toFill || c == Pen_Colour)
-                    {
-                        break;
-                    }
-                    
-                    colors[(int)i + (int)current.y * w] = Pen_Colour;
-
-                    if (current.y + 1 < h)
-                    {
-                        c = colors[(int)i + (int)current.y * w + w];
-                        if (c == toFill && c != Pen_Colour)
-                        {
-                            q.Enqueue(new Point(i, current.y + 1));
-                        }
-                    }
-
-                    if (current.y - 1 >= 0)
-                    {
-                        c = colors[(int)i + (int)current.y * w - w];
-                        if (c == toFill && c != Pen_Colour)
-                            q.Enqueue(new Point(i, current.y - 1));
-                    }
-                }
-            }
-            drawable_texture.SetPixels(colors);
-            */
-        }
-
-
 
         public void MarkPixelsToColour(Vector2 center_pixel, int pen_thickness, Color color_of_pen)
         {
@@ -327,9 +244,41 @@ namespace FreeDraw
             cur_colors[array_pos] = color;
         }
         public void ApplyMarkedPixelChanges()
-        {
+        {            
             drawable_texture.SetPixels32(cur_colors);
             drawable_texture.Apply();
+        }
+
+        public void undo()
+        {
+            if(undoStack.Count != 0)
+            {
+                Debug.Log("Undoing Last Change");
+                redoStack.Push(drawable_texture.GetPixels32());
+                Color32[] oldColors = (Color32[])undoStack.Pop();
+                drawable_texture.SetPixels32(oldColors);
+                drawable_texture.Apply();
+            }
+            else
+            {
+                Debug.Log("Nothing to undo!");
+            }
+        }
+
+        public void redo()
+        {
+            if(redoStack.Count != 0)
+            {
+                Debug.Log("Redoing last change");
+                Color32[] redoneColors = (Color32[])redoStack.Pop();
+                undoStack.Push(drawable_texture.GetPixels32());
+                drawable_texture.SetPixels32(redoneColors);
+                drawable_texture.Apply();
+            }
+            else
+            {
+                Debug.Log("Nothing to redo!");
+            }
         }
 
 

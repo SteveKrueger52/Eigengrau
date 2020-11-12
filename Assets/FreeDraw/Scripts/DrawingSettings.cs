@@ -34,16 +34,6 @@ namespace FreeDraw
             Drawable.Pen_Colour = c;
         }
 
-        public void enableFill()
-        {
-            Drawable.fillSelected = true;
-        }
-
-        public void disableFill()
-        {
-            Drawable.fillSelected = false;
-        }
-
         // Call these these to change the pen settings
         public void SetMarkerRed()
         {
@@ -107,6 +97,16 @@ namespace FreeDraw
         public void PartialSetEraser()
         {
             SetMarkerColour(new Color(255f, 255f, 255f, 0.5f));
+        }
+
+        public void undo()
+        {
+            Drawable.drawable.undo();
+        }
+
+        public void redo()
+        {
+            Drawable.drawable.redo();
         }
     }
 }
