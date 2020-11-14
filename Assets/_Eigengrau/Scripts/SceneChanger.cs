@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Windows;
 
@@ -65,8 +66,15 @@ public class SceneChanger : MonoBehaviour
     public static void ClearDrawings()
     {
         string path = Application.persistentDataPath + "/SaveImages";
-        if (!System.IO.Directory.Exists(path))
-            System.IO.Directory.Delete(path);
+        DirectoryInfo di = new DirectoryInfo(path);
+        if (System.IO.Directory.Exists(path))
+        {
+            foreach (FileInfo file in di.GetFiles())
+                file.Delete();
+            foreach (DirectoryInfo dir in di.GetDirectories())
+                dir.Delete();
+        }
+            
         foreach (HotSwap hs in FindObjectsOfType<HotSwap>())
             hs.Hotswap();
     }

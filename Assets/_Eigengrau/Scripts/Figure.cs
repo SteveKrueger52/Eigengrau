@@ -33,11 +33,6 @@ public class Figure : MonoBehaviour
             playerAction.SetBool("isWalkingRight", false);
             playerAction.SetBool("isWalkingLeft", false);
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Application.Quit();
-        }
     }
 
     private void FixedUpdate()

@@ -341,24 +341,37 @@ namespace FreeDraw
         {
             byte[] bytes = drawable_texture.EncodeToPNG();
             var path = Application.persistentDataPath + "/SaveImages";
-            string name; //DateTime.Now.ToString();
+            string name = ""; //DateTime.Now.ToString();
 //            name = name.Replace("/", string.Empty);
 //            name = name.Replace(":", string.Empty);
 
             //0 = bed, 1 = easel, 3 = lamp
-            if (objType == 0)
+            switch (objType)
             {
-                name = "Bed";// + name;
-            }
-            
-            else if (objType == 1)
-            {
-                name = "Easel";// + name;
-            }
-
-            else
-            {
-                name = "Lamp";// + name;
+                case 0:
+                    name = "Easel";
+                    break;
+                case 1:
+                    name = "Painting";
+                    break;
+                case 2:
+                    name = "Desk";
+                    break;
+                case 3:
+                    name = "Bed";
+                    break;
+                case 4:
+                    name = "Wallpaper";
+                    break;
+                case 5:
+                    name = "Door";
+                    break;
+                case 6:
+                    name = "Window";
+                    break;
+                case 7:
+                    name = "Lamp";
+                    break;
             }
             
             if (!System.IO.Directory.Exists(path))

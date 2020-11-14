@@ -88,6 +88,14 @@ namespace FreeDraw
             SetMarkerColour(c);
             Drawable.drawable.SetPenBrush();
         }
+        
+        public void SetMarkerWhite()
+        {
+            Color c = Color.white;
+            c.a = Transparency;
+            SetMarkerColour(c);
+            Drawable.drawable.SetPenBrush();
+        }
 
         public void SetEraser()
         {

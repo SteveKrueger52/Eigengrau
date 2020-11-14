@@ -11,6 +11,8 @@ public class ArtScene : MonoBehaviour
     public Drawable canvas;
 
     private int objType = 0;
+    // 0 - Easel       1 - Painting    2 - Desk        3 - Bed
+    // 4 - Wallpaper   5 - Door        6 - Window      7 - Lamp
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +25,6 @@ public class ArtScene : MonoBehaviour
     public void loadDrawing(int objType)
     {
         this.objType = objType < 0 ? 0 : objType;
-        //0 = bed, 1 = easel, 2 = lamp
         canvas.setObjType(objType);
         image.SetActive(true);
         /*
