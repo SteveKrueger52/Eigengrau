@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
@@ -132,17 +133,24 @@ public class GameDataLogger : MonoBehaviour
             Debug.Log("Error. Check internet connection!");
         }
 
+        Debug.Log("Connecting to Google...");
         ConnectToGoogle();
-
+        Debug.Log("Connected to Google; Posting Dummy Data");
         PostToGoogle(new [] {new object[] {"TEST"}});
-        
+        Debug.Log("Posting actual Data");
         PostToGoogle(data);
+        Debug.Log("All Done!");
     }
 
     private void ConnectToGoogle()
     {
-        GoogleCredential credential = GoogleCredential.FromJson(key);
-        //GoogleCredential credential = GoogleCredential.FromJson(Resources.Load<TextAsset>("GSheetsAPI").text);
+        GoogleCredential credential =
+            //GoogleCredential.FromJson(key);
+            //GoogleCredential.FromJson(Resources.Load<TextAsset>("GSheetsAPI").text);
+            //GoogleCredential.FromFile(Application.streamingAssetsPath + "/key.json");
+            GoogleCredential.FromStream(new FileStream(Application.streamingAssetsPath + "/key.json", FileMode.Open));
+
+
         _sheetsService = new SheetsService(new BaseClientService.Initializer {
             HttpClientInitializer = credential, ApplicationName = "Eigengrau"
         });

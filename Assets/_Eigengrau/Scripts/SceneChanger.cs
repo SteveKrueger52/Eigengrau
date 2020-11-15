@@ -82,7 +82,7 @@ public class SceneChanger : MonoBehaviour
 
     public static void ExitGame()
     {
-        GameDataLogger.Instance.BeforeApplicationQuit();
+        //GameDataLogger.Instance.BeforeApplicationQuit();
         Application.Quit();
     }
 }
