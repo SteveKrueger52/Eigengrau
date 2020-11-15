@@ -39,11 +39,13 @@ public class ArtScene : MonoBehaviour
     public void saveDrawing()
     {
         canvas.SaveDrawing();
+        GameDataLogger.ExitDrawingScene(true);
         SceneChanger.Instance.EndDrawing();
     }
 
     public void quitWithoutSaving()
     {
+        GameDataLogger.ExitDrawingScene(false);
         SceneChanger.Instance.EndDrawing();
     }
 

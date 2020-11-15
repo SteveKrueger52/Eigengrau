@@ -45,6 +45,7 @@ public class SceneChanger : MonoBehaviour
     public void BeginDrawing(int drawIndex)
     {
         _drawIndex = drawIndex;
+        GameDataLogger.EnterDrawScene(drawIndex);
         _returnScene = SceneManager.GetActiveScene().buildIndex;
         Debug.Log("Opening Artboard");
         SceneManager.LoadScene(_drawSceneIndex);
@@ -77,5 +78,11 @@ public class SceneChanger : MonoBehaviour
             
         foreach (HotSwap hs in FindObjectsOfType<HotSwap>())
             hs.Hotswap();
+    }
+
+    public static void ExitGame()
+    {
+        GameDataLogger.Instance.BeforeApplicationQuit();
+        Application.Quit();
     }
 }

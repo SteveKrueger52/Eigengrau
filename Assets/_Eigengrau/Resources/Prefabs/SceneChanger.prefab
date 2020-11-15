@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2508420040500722744}
   - component: {fileID: 2508420040500722745}
+  - component: {fileID: 4310838504135635044}
   m_Layer: 0
   m_Name: SceneChanger
   m_TagString: Untagged
@@ -44,3 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _drawSceneIndex: 1
+--- !u!114 &4310838504135635044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2508420040500722746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f76c0344d53d4240ab7ad5d933562f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
