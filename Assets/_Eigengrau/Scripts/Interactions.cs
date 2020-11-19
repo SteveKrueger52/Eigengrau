@@ -7,22 +7,19 @@ using UnityEngine.SceneManagement;
 public class Interactions : MonoBehaviour
 {
     string text = "";
-    GameObject txtObj;
+    public GameObject txtObj;
     int textState; //0 = no text displayed, 1 = text animating, 2 = text done, waiting for click to proceed, 3 = door switch
     public GameObject chara;
     bool doorSwitch;
     int changingScene; //0 = no choice selected, 1 = changing scene, 2 = not changing scene
-    GameObject yesBtn;
-    GameObject noBtn;
+    public GameObject yesBtn;
+    public GameObject noBtn;
 
     private void Start()
-    {
-        txtObj = this.gameObject.transform.GetChild(1).gameObject;
-        yesBtn = txtObj.transform.GetChild(0).gameObject;
-        noBtn = txtObj.transform.GetChild(1).gameObject;
+    {        
         yesBtn.SetActive(false);
         noBtn.SetActive(false);
-        this.gameObject.SetActive(false);
+        txtObj.gameObject.SetActive(false);
         textState = 0;
         doorSwitch = false;
         changingScene = 0;
@@ -31,13 +28,15 @@ public class Interactions : MonoBehaviour
     private void Update()
     {
         if(textState != 0) //disable character movement if they're interacting with something
-        {
-            this.gameObject.SetActive(true);
+        {            
             chara.GetComponent<Figure>().moveSpeed = 0;
         }
         else
         {
-            this.gameObject.SetActive(false);
+            if(txtObj.gameObject.activeSelf)
+            {
+                textBoxOff();
+            }            
             chara.GetComponent<Figure>().moveSpeed = 5;
         }
 
@@ -56,7 +55,6 @@ public class Interactions : MonoBehaviour
 
     public void setTextBed()
     {
-        Debug.Log("aaa???");
         if(textState == 0)
         {
             text = "It's not time to sleep yet...";
@@ -115,22 +113,23 @@ public class Interactions : MonoBehaviour
         {
             text = "Should I head out?";
             doorSwitch = true;
-            StartCoroutine(AnimateText());
+            displayFlavorText();
         }
     }
 
     void displayFlavorText()
     {        
         textState = 1;
+        textBoxOn();
         StartCoroutine(AnimateText());
     }
 
     IEnumerator AnimateText()
     {
-        for (int i = 0; i < text.Length; i++)
+        for (int i = 0; i < text.Length+1; i++)
         {
-            txtObj.GetComponent<Text>().text = text.Substring(0, i);
-            yield return new WaitForSeconds(0.03f);
+            txtObj.transform.GetChild(1).GetComponent<Text>().text = text.Substring(0, i);
+            yield return new WaitForSeconds(0.05f);
         }
 
         if(doorSwitch)
@@ -167,8 +166,12 @@ public class Interactions : MonoBehaviour
     {
         changingScene = 1;
         //SceneManager.LoadScene(streetscene);
+        //The rest of this function can be deleted when we get the new scene!
         Debug.Log("Changing To Street Scene... jk that doesn't exist yet :P");
         textState = 0;
+        yesBtn.SetActive(false);
+        noBtn.SetActive(false);
+        doorSwitch = false;
     }
 
     public void notChangingScene()
@@ -180,4 +183,21 @@ public class Interactions : MonoBehaviour
         doorSwitch = false;
     }
 
+    void textBoxOn()
+    {
+        txtObj.gameObject.SetActive(true);
+        for (int i = 0; i < txtObj.transform.childCount; i++)
+        {
+            txtObj.transform.GetChild(i).gameObject.SetActive(true);
+        }
+    }
+
+    void textBoxOff()
+    {
+        txtObj.gameObject.SetActive(false);
+        for (int i = 0; i < txtObj.transform.childCount; i++)
+        {
+            txtObj.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
 }
