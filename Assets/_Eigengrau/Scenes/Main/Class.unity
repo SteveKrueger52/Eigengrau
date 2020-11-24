@@ -640,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: StudentDesk
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -2383,7 +2383,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Podium
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -2653,7 +2653,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Blackboard
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -4822,7 +4822,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: StudentDesk
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}

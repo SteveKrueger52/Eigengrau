@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: StreetDecor
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -981,7 +981,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Streetlamp
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1157,7 +1157,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: StreetDecor
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1650,7 +1650,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1968,7 +1968,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Skyline
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -2570,7 +2570,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Streetlamp
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -3062,7 +3062,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Sign
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -3238,7 +3238,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Streetlamp
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -3679,7 +3679,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Streetlamp
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -4647,7 +4647,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: StreetDecor
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -4829,7 +4829,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659949, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: ItemName
-      value: Door
+      value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659951, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
