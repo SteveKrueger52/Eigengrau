@@ -286,15 +286,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Festive!
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &76077830
@@ -1045,15 +1045,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: The number one source of light pollution around here.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1001 &495934203
@@ -1221,15 +1221,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Festive!
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &498714575
@@ -1559,7 +1559,7 @@ PrefabInstance:
     - target: {fileID: 7384038976891226172, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384038976891226173, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1569,7 +1569,7 @@ PrefabInstance:
     - target: {fileID: 7384038977348812018, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.63
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977348812019, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1585,7 +1585,7 @@ PrefabInstance:
     - target: {fileID: 7384038977824659948, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.21
+      value: 5.17
       objectReference: {fileID: 0}
     - target: {fileID: 7384038977824659948, guid: 73a90ad5c74fb4c2da060814b0cd2288,
         type: 3}
@@ -1714,8 +1714,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
+      - m_Target: {fileID: 981918132}
+        m_MethodName: interactGoHome
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2037,15 +2037,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: I love the view here.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &787641740
@@ -2634,15 +2634,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Huh. This one's broken.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &981918131
@@ -3126,8 +3126,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
+      - m_Target: {fileID: 981918132}
+        m_MethodName: interactGoToSchool
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3302,15 +3302,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: The number one source of light pollution around here.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1399462304
@@ -3743,15 +3743,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: The number one source of light pollution around here.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1607474868
@@ -4711,15 +4711,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Festive!
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!4 &1880105181 stripped
@@ -4893,15 +4893,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: interactDoor
-        m_Mode: 1
+      - m_Target: {fileID: 981918132}
+        m_MethodName: setTextGeneric
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: It's a tree.
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1927203649

@@ -54,6 +54,15 @@ public class Interactions : MonoBehaviour
         }
     }
 
+    public void setTextGeneric(string flavortext)
+    {
+        if(textState == 0)
+        {
+            text = flavortext;
+            displayFlavorText();
+        }
+    }
+
     public void setTextBed()
     {
         if(textState == 0)
