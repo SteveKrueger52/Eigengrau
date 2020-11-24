@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/_Eigengrau/Scenes/Main/Home.unity
     guid: 7851bed363d444ba2898470be6acf249
   - enabled: 1
+    path: Assets/_Eigengrau/Scenes/Main/Street.unity
+    guid: 97a0636d61b194c1fbadab3a79ee868f
+  - enabled: 1
+    path: Assets/_Eigengrau/Scenes/Main/Class.unity
+    guid: 7011362953f1844788480c789d518777
+  - enabled: 1
     path: Assets/_Eigengrau/Scenes/Main/ExampleDrawingScene.unity
     guid: 4ce4d4d4aeef2e54e97bb40827915db8
   m_configObjects:

@@ -12,6 +12,7 @@ public class Interactions : MonoBehaviour
     public GameObject chara;
     bool doorSwitch;
     int changingScene; //0 = no choice selected, 1 = changing scene, 2 = not changing scene
+    int targetScene;
     public GameObject yesBtn;
     public GameObject noBtn;
 
@@ -113,6 +114,29 @@ public class Interactions : MonoBehaviour
         {
             text = "Should I head out?";
             doorSwitch = true;
+            targetScene = (int) SceneChanger.SceneID.STREET;
+            displayFlavorText();
+        }
+    }
+    
+    public void interactGoHome()
+    {
+        if (textState == 0)
+        {
+            text = "Time to head home?";
+            doorSwitch = true;
+            targetScene = (int) SceneChanger.SceneID.HOME;
+            displayFlavorText();
+        }
+    }
+    
+    public void interactGoToSchool()
+    {
+        if (textState == 0)
+        {
+            text = "Work is this way. Shall we?";
+            doorSwitch = true;
+            targetScene = (int) SceneChanger.SceneID.CLASS;
             displayFlavorText();
         }
     }
@@ -167,7 +191,8 @@ public class Interactions : MonoBehaviour
         changingScene = 1;
         //SceneManager.LoadScene(streetscene);
         //The rest of this function can be deleted when we get the new scene!
-        Debug.Log("Changing To Street Scene... jk that doesn't exist yet :P");
+        SceneChanger.Instance.GoToScene(targetScene);
+        
         textState = 0;
         yesBtn.SetActive(false);
         noBtn.SetActive(false);

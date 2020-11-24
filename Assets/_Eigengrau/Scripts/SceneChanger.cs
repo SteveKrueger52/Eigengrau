@@ -20,10 +20,19 @@ public class SceneChanger : MonoBehaviour
             return _instance;
         }
     }
+
+    public enum SceneID
+    {
+        HOME, STREET, CLASS, DRAW
+    }
     
-    [SerializeField] private int _drawSceneIndex;
-    private int _returnScene;
+//    private int _homeSceneIndex = 0;
+//    private int _streetSceneIndex = 1;
+//    private int _classSceneIndex = 2;
+//    private int _drawSceneIndex = 3;
+    public int _returnScene;
     private int _drawIndex = -1;
+    
     
 
     private void Awake()
@@ -39,6 +48,7 @@ public class SceneChanger : MonoBehaviour
 
     public void GoToScene(int buildIndex)
     {
+        _returnScene = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(buildIndex);
     }
     
@@ -46,9 +56,7 @@ public class SceneChanger : MonoBehaviour
     {
         _drawIndex = drawIndex;
         GameDataLogger.EnterDrawScene(drawIndex);
-        _returnScene = SceneManager.GetActiveScene().buildIndex;
-        Debug.Log("Opening Artboard");
-        SceneManager.LoadScene(_drawSceneIndex);
+        GoToScene((int) SceneID.DRAW);
     }
 
     // Returns the build index of the current drawing to replace,
