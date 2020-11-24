@@ -11,8 +11,10 @@ public class ArtScene : MonoBehaviour
     public Drawable canvas;
 
     private int objType = 0;
-    // 0 - Easel       1 - Painting    2 - Desk        3 - Bed
-    // 4 - Wallpaper   5 - Door        6 - Window      7 - Lamp
+    //  0 - Easel       1 - Painting    2 - Desk        3 - Bed
+    //  4 - Wallpaper   5 - Door        6 - Window      7 - Lamp
+    //  8 - Tree        9 - Podium     10 - S. Desk    11 - Blackboard
+    // 12 - Skyline    13 - Decor      14 - Streetlamp 15 - Sign
 
     // Start is called before the first frame update
     void Start()

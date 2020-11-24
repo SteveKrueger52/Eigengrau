@@ -372,6 +372,30 @@ namespace FreeDraw
                 case 7:
                     name = "Lamp";
                     break;
+                case 8:
+                    name = "Tree";
+                    break;
+                case 9:
+                    name = "Podium";
+                    break;
+                case 10:
+                    name = "StudentDesk";
+                    break;
+                case 11:
+                    name = "Blackboard";
+                    break;
+                case 12:
+                    name = "Skyline";
+                    break;
+                case 13:
+                    name = "StreetDecor";
+                    break;
+                case 14:
+                    name = "Streetlamp";
+                    break;
+                case 15:
+                    name = "Sign";
+                    break;
             }
             
             if (!System.IO.Directory.Exists(path))
